@@ -25,7 +25,6 @@ $(TARGET).elf: $(TARGET).o
 $(TARGET).hex: $(TARGET).elf
 	$(OBJCOPY) -O ihex -R .eeprom $< $@
 
-# 🔥 Upload pro Arduino Uno
 flash: $(TARGET).hex
 	$(AVRDUDE) -c $(PROGRAMMER) -p $(MCU) -P $(PORT) -b $(BAUD) -U flash:w:$(TARGET).hex:i
 
